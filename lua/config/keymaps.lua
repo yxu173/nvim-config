@@ -1,19 +1,19 @@
 local wk = require("which-key")
 
 -- Move selected lines with shift+j or shift+k
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+--luavim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+--vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Join line while keeping the cursor in the same position
-vim.keymap.set("n", "J", "mzJ`z")
+--vim.keymap.set("n", "J", "mzJ`z")
 
 -- Keep cursor centred while scrolling up and down
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+--vim.keymap.set("n", "<C-d>", "<C-d>zz")
+--vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- Next and previous instance of the highlighted letter
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+--vim.keymap.set("n", "n", "nzzzv")
+--vim.keymap.set("n", "N", "Nzzzv")
 
 -- Better paste (prevents new paste buffer)
 vim.keymap.set("x", "<leader>p", [["_dP]])
@@ -32,10 +32,10 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "Q", "<nop>")
 
 -- Quickfix navigation
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Next Quickfix Item" })
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Previous Quickfix Item" })
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Next Location List Item" })
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Previous Location List Item" })
+--vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Next Quickfix Item" })
+--vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Previous Quickfix Item" })
+--vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Next Location List Item" })
+--vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Previous Location List Item" })
 
 -- Search and replace current word
 vim.keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Search and Replace Word" })
@@ -44,7 +44,7 @@ vim.keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left>
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make File Executable" })
 
 -- Undotree
-vim.keymap.set("n", "<leader>uu", vim.cmd.UndotreeToggle, { desc = "Toggle Undotree" })
+--vim.keymap.set("n", "<leader>uu", vim.cmd.UndotreeToggle, { desc = "Toggle Undotree" })
 
 -- Oil
 vim.keymap.set("n", "<leader>e", "<cmd>lua require('oil').toggle_float()<CR>", { desc = "Toggle Oil" })
@@ -81,6 +81,25 @@ vim.keymap.set("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>", { desc = "Tmux Navig
 vim.keymap.set("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", { desc = "Tmux Navigate Down" })
 vim.keymap.set("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", { desc = "Tmux Navigate Up" })
 
+
+-- CopilotChat keybindings
+
+vim.keymap.set("n", "<leader>md", "<cmd>CopilotChatFixDiagnostic<CR>", { desc = "CopilotChat Fix Diagnostic" })
+vim.keymap.set("n", "<leader>mc", "<cmd>CopilotChatToggle<CR>", { desc = "CopilotChat" })
+vim.keymap.set("n", "<leader>mx", "<cmd>CopilotChatExplain<CR>", { desc = "CopilotChat - Explain code" })
+vim.keymap.set("n", "<leader>mt", "<cmd>CopilotChatTests<CR>", { desc = "CopilotChat - Generate tests" })
+vim.keymap.set("n", "<leader>ms", "<cmd>CopilotChatSummarize<CR>", { desc = "CopilotChat - Summarize text" })
+vim.keymap.set("n", "<leader>msp", "<cmd>CopilotChatSpelling<CR>", { desc = "CopilotChat - Spelling" })
+vim.keymap.set("n", "<leader>mw", "<cmd>CopilotChatWording<CR>", { desc = "CopilotChat - Wording" })
+vim.keymap.set("n", "<leader>mbn", "<cmd>CopilotChatBetterNamings<CR>", { desc = "CopilotChat - Better Namings" })
+vim.keymap.set("n", "<leader>md", "<cmd>CopilotChatDocumentation<CR>", { desc = "CopilotChat - Documentation" })
+vim.keymap.set("n", "<leader>msw", "<cmd>CopilotChatSwaggerApiDocs<CR>", { desc = "CopilotChat - Swagger API Docs" })
+vim.keymap.set("n", "<leader>mr", "<cmd>CopilotChatRefactor<CR>", { desc = "CopilotChat - Refactor" })
+vim.keymap.set("n", "<leader>mf", "<cmd>CopilotChatFixCode<CR>", { desc = "CopilotChat - Fix Code" })
+vim.keymap.set("n", "<leader>me", "<cmd>CopilotChatFixError<CR>", { desc = "CopilotChat - Fix Error" })
+
+
+
 -- Neovim Pet
 vim.keymap.set("n", "<leader>;h", function()
   require("duck").hatch("🐿️", 2)
@@ -103,7 +122,8 @@ wk.register({
     t = { name = "+Twilight" },
     u = { name = "+ui" },
     w = { name = "+windows" },
-    x = { name = "+diagnostics/quickfix" },
+    m = { name = "CopilotChat" },
+   -- x = { name = "+diagnostics/quickfix" },
     z = { name = "+zen" },
   },
   g = { name = "+goto" },

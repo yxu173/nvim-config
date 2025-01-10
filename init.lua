@@ -1,7 +1,9 @@
 require("config.lazy")
 
 vim.opt.shell = 'powershell'
-vim.cmd.colorscheme("catppuccin")
+
+vim.cmd.colorscheme("solarized-osaka")
+--vim.cmd.colorscheme("catppuccin")
 
 -- This is the old line number highlight behaviour
 --vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#6e738d", bold = false })
